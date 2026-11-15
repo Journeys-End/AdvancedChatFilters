@@ -31,7 +31,7 @@ import java.util.List;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.client.gui.DrawContext;
 
 @Environment(EnvType.CLIENT)
 public class WidgetAdvancedFilterEntry extends WidgetListEntryBase<ScriptFilter> {
@@ -121,7 +121,7 @@ public class WidgetAdvancedFilterEntry extends WidgetListEntryBase<ScriptFilter>
     }
 
     @Override
-    public void render(int mouseX, int mouseY, boolean selected, MatrixStack matrixStack) {
+    public void render(int mouseX, int mouseY, boolean selected, DrawContext matrixStack) {
         RenderUtils.color(1f, 1f, 1f, 1f);
 
         // Draw a lighter background for the hovered and the selected entry
@@ -257,7 +257,7 @@ public class WidgetAdvancedFilterEntry extends WidgetListEntryBase<ScriptFilter>
         return ret;
     }
 
-    protected void drawTextFields(int mouseX, int mouseY, MatrixStack matrixStack) {
+    protected void drawTextFields(int mouseX, int mouseY, DrawContext matrixStack) {
         if (this.num != null) {
             this.num.getTextField().render(matrixStack, mouseX, mouseY, 0f);
         }
@@ -265,7 +265,7 @@ public class WidgetAdvancedFilterEntry extends WidgetListEntryBase<ScriptFilter>
 
     @Override
     public void postRenderHovered(
-            int mouseX, int mouseY, boolean selected, MatrixStack matrixStack) {
+            int mouseX, int mouseY, boolean selected, DrawContext matrixStack) {
         super.postRenderHovered(mouseX, mouseY, selected, matrixStack);
 
         List<String> hoverLines;

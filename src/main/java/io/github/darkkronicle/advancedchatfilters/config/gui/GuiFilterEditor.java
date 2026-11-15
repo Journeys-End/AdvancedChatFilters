@@ -30,7 +30,7 @@ import io.github.darkkronicle.advancedchatfilters.filters.ParentFilter;
 import io.github.darkkronicle.advancedchatfilters.filters.ReplaceFilter;
 import io.github.darkkronicle.advancedchatfilters.registry.MatchReplaceRegistry;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
@@ -78,13 +78,13 @@ public class GuiFilterEditor extends GuiBase {
     }
 
     @Override
-    public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
+    public void render(DrawContext matrixStack, int mouseX, int mouseY, float partialTicks) {
         super.render(matrixStack, mouseX, mouseY, partialTicks);
         int y = test.getY() + 20;
         int x = 10;
         for (Text t : outputMessage) {
             if (t != null) {
-                textRenderer.drawWithShadow(matrixStack, t, x, y, -1);
+                matrixStack.drawTextWithShadow(textRenderer, t, x, y, -1);
             }
             y += textRenderer.fontHeight + 2;
         }

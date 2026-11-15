@@ -31,7 +31,7 @@ import java.util.function.Consumer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.client.gui.DrawContext;
 
 /*
    This class is based heavily off of https://github.com/maruohon/minihud/blob/d565d39c68bdcd3ed1e1cf2007491e03d9659f34/src/main/java/fi/dy/masa/minihud/gui/widgets/WidgetShapeEntry.java#L19 which is off the GNU LGPL
@@ -130,7 +130,7 @@ public class WidgetFilterEntry extends WidgetListEntryBase<Filter> {
     }
 
     @Override
-    public void render(int mouseX, int mouseY, boolean selected, MatrixStack matrixStack) {
+    public void render(int mouseX, int mouseY, boolean selected, DrawContext matrixStack) {
         RenderUtils.color(1f, 1f, 1f, 1f);
 
         // Draw a lighter background for the hovered and the selected entry
@@ -176,7 +176,7 @@ public class WidgetFilterEntry extends WidgetListEntryBase<Filter> {
 
     @Override
     public void postRenderHovered(
-            int mouseX, int mouseY, boolean selected, MatrixStack matrixStack) {
+            int mouseX, int mouseY, boolean selected, DrawContext matrixStack) {
         super.postRenderHovered(mouseX, mouseY, selected, matrixStack);
 
         if (mouseX >= this.x
@@ -291,7 +291,7 @@ public class WidgetFilterEntry extends WidgetListEntryBase<Filter> {
         return ret;
     }
 
-    protected void drawTextFields(int mouseX, int mouseY, MatrixStack matrixStack) {
+    protected void drawTextFields(int mouseX, int mouseY, DrawContext matrixStack) {
         if (this.num != null) {
             this.num.getTextField().render(matrixStack, mouseX, mouseY, 0f);
         }

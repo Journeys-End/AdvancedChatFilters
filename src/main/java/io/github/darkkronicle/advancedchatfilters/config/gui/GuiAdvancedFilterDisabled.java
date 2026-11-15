@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.OrderedText;
 import net.minecraft.text.Text;
@@ -60,13 +60,12 @@ public class GuiAdvancedFilterDisabled extends GuiBase {
     }
 
     @Override
-    public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
+    public void render(DrawContext matrixStack, int mouseX, int mouseY, float partialTicks) {
         super.render(matrixStack, mouseX, mouseY, partialTicks);
         int width = client.getWindow().getScaledWidth();
         int y = 100;
         for (OrderedText warn : warning) {
-            drawCenteredTextWithShadow(
-                    matrixStack,
+            matrixStack.drawCenteredTextWithShadow(
                     client.textRenderer,
                     warn,
                     width / 2,
